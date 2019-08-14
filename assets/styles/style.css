@@ -1,0 +1,321 @@
+html, body { height: 100%; }
+
+.wrapper {
+  position: relative;
+  padding-top: 50px;
+  height: calc(100% - 50px);
+  font-size: 20px;
+  line-height: 1.5;
+  font-family: 'Courier', monospace;
+  color: #fff;
+  background-color: #3cbcfc;
+  overflow: hidden;
+  transition: background-color 1s;
+}
+.gs {
+  background-image: url('../img/gs.png');
+  background-repeat: no-repeat;
+  background-position: 9999px 9999px;
+}
+* {
+  cursor: url('../img/aim.png') 16 16, crosshair;
+}
+.sky-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: calc(100% - 226px);
+}
+.tree {
+  position: absolute;
+  bottom: 180px;
+  left: 8%;
+  width: 208px;
+  height: 360px;
+  background-position: -452px -414px;
+}
+.text {
+  margin: auto;
+  width: 500px;
+  text-align: center;
+}
+.text p {
+  margin-bottom: 30px;
+}
+p.start-text, p.end-text {
+  font-size: 28px;
+  font-weight: 600;
+}
+p.game-over {
+  font-size: 40px;
+  font-weight: 600;
+}
+.timer {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  font-size: 30px;
+}
+.ammo {
+  position: absolute;
+  top: 30px;
+  left: 30px;
+  display: flex;
+  flex-wrap: wrap;
+  width: 410px;
+}
+.bullet {
+  margin: 0 15px 10px 0;
+  width: 16px;
+  height: 30px;
+  filter: drop-shadow(0 0 5px);
+}
+.bullet.available {
+  background-position: -24px -177px;
+}
+.foot {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 226px;
+  background: url('../img/bg.png') 0 0 repeat-x;
+  z-index: 5;
+}
+.btn {
+  position: absolute;
+  width: 200px;
+  height: 40px;
+
+  visibility: hidden;
+  opacity: 0;
+
+  color: #fff;
+  font: inherit;
+  font-weight: bold;
+
+  border-radius: 5px;
+  border: 2px outset #fff;
+  background-color: transparent;
+
+  transition: opacity 0.5s;
+}
+.restart-btn {
+  top: 64%;
+  right: 50px;
+}
+.next-btn {
+  top: 64%;
+  right: 50px;
+}
+.dog {
+  position: absolute;
+  bottom: 90px;
+  left: 0;
+  width: 166px;
+  height: 122px;
+  background-position: -24px -24px;
+  transition: transform 3s linear, bottom 0.5s linear;
+  z-index: 10;
+}
+.dog_walk {
+  animation-name: dog-walk;
+  animation-duration: .6s;
+  animation-iteration-count: infinite;
+  animation-timing-function: steps(1, end);
+  animation-delay: 0s;
+  transition: transform 3s linear alternate;
+}
+.dog_jump {
+  width: 161px;
+  height: 143px;
+  animation-name: dog-jump;
+  animation-duration: 1s;
+  animation-iteration-count: 1;
+  animation-timing-function: steps(1, end);
+  animation-delay: 0s;
+  animation-fill-mode: forwards;
+  transition: transform .5s linear .5s;
+}
+.show_duck {
+  width: 124px;
+  height: 112px;
+  background-position: -24px -563px;
+}
+.show_ducks {
+  width: 161px;
+  height: 112px;
+  background-position: -159px -563px;
+}
+.no_ducks {
+  width: 87px;
+  height: 117px;
+  background-position: -1065px -30px;
+  animation: 1s dog-go-up, 0.5s dog-giggle 3 steps(1, end) 1s forwards, 1s dog-go-up reverse 3s forwards;
+}
+@keyframes dog-walk {
+  0% {
+    background-position: -24px -24px;
+  }
+  25% {
+    background-position: -206px -24px;
+  }
+  50% {
+    background-position: -388px -24px;
+  }
+  75% {
+    background-position: -570px -24px;
+  }
+  100% {
+    background-position: -24px -24px;
+  }
+}
+@keyframes dog-jump {
+  0% {
+    background-position: -746px -6px;
+  }
+  40% {
+    width: 101px;
+    height: 96px;
+    background-position: -932px -59px;
+  }
+  100% {
+    width: 101px;
+    height: 96px;
+    background-position: -932px -59px;
+  }
+}
+@keyframes dog-go-up {
+  0% {
+    -ms-transform: translate(48vw, 0px);
+    transform: translate(48vw, 0px);
+  }
+  100% {
+    -ms-transform: translate(48vw, -100px);
+    transform: translate(48vw, -100px);
+  }
+}
+@keyframes dog-giggle {
+  0% {
+    -ms-transform: translate(48vw, -100px) scaleY(1);
+    transform: translate(48vw, -100px) scaleY(1);
+  }
+  50% {
+    -ms-transform: translate(48vw, -100px) scaleY(1.1);
+    transform: translate(48vw, -100px) scaleY(1.1);
+  }
+  100% {
+    -ms-transform: translate(48vw, -100px) scaleY(1);
+    transform: translate(48vw, -100px) scaleY(1);
+  }
+}
+.duck {
+  position: absolute;
+  bottom: -95px;
+  left: 48vw;
+  display: none;
+  transition: left 1.5s linear, bottom 1.5s linear, opacity 0.5s linear, filter 0.2s linear;
+}
+.shot {
+  width: 93px;
+  height: 87px;
+  background-position: -63px -434px;
+}
+.falling {
+  width: 53px;
+  height: 89px;
+  background-position: -184px -432px;
+}
+.duck_fly {
+  display: block !important;
+}
+.duck_fly_left,
+.duck_fly_top_left,
+.duck_fly_right,
+.duck_fly_top_right {
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+  animation-timing-function: steps(1, end);
+  animation-delay: 0s;
+}
+.duck_fly_left {
+  animation-name: duck-fly-left;
+}
+.duck_fly_top_left {
+  animation-name: duck-fly-top-left;
+}
+.duck_fly_right {
+  animation-name: duck-fly-right;
+}
+.duck_fly_top_right {
+  animation-name: duck-fly-top-right;
+}
+@keyframes duck-fly-left {
+  0% {
+    width: 102px;
+    height: 72px;
+    background-position: -542px -203px;
+  }
+  50% {
+    width: 104px;
+    height: 61px;
+    background-position: -956px -212px;
+  }
+  100% {
+    width: 102px;
+    height: 72px;
+    background-position: -542px -203px;
+  }
+}
+@keyframes duck-fly-top-left {
+  0% {
+    width: 74px;
+    height: 95px;
+    background-position: -116px -176px;
+  }
+  50% {
+    width: 104px;
+    height: 95px;
+    background-position: -434px -182px;
+  }
+  100% {
+    width: 74px;
+    height: 95px;
+    background-position: -116px -176px;
+  }
+}
+@keyframes duck-fly-right {
+  0% {
+    width: 102px;
+    height: 72px;
+    background-position: -680px -203px;
+  }
+  50% {
+    width: 104px;
+    height: 61px;
+    background-position: -818px -212px;
+  }
+  100% {
+    width: 102px;
+    height: 72px;
+    background-position: -680px -203px;
+  }
+}
+@keyframes duck-fly-top-right {
+  0% {
+    width: 74px;
+    height: 95px;
+    background-position: -218px -176px;
+  }
+  50% {
+    width: 104px;
+    height: 95px;
+    background-position: -323px -182px;
+  }
+  100% {
+    width: 74px;
+    height: 95px;
+    background-position: -218px -176px;
+  }
+}

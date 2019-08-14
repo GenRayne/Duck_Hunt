@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Duck Hunt</title>
+	<link rel="stylesheet" href="assets/styles/reset.css">
+	<link rel="stylesheet" href="assets/styles/style.css">
+	<script src="assets/js/duck-hunt.js"></script>
+</head>
+<body>
+	<div class="wrapper">
+		<div class="audio">
+			<audio id="shot" src="assets/sound/shoot.ogg"></audio>
+			<audio id="bark" src="assets/sound/bark.mp3"></audio>
+			<audio id="giggle" src="assets/sound/giggle.mp3"></audio>
+			<audio id="gameOverSound" src="assets/sound/game-over.mp3"></audio>
+		</div>
+		
+		<div class="ammo"></div>
+
+		<div class="timer"></div>
+
+		<div class="tree gs"></div>
+
+		<div class="foot">
+			<button class="next-btn btn" type="button">Next Round</button>
+			<button class="restart-btn btn" type="button">Restart</button>
+		</div>
+
+		<div class="dog gs"></div>
+
+		<div class="sky-container"></div>
+
+		<div class="text">
+			<p>In this game you need to shoot ducks before the time runs out. You also have a limited amount of ammo.</p>
+			<p class="start-text">Click anywhere to start</p>
+		</div>
+	</div>
+</body>
+</html>
